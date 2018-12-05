@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CONFIG>
-  <Compiler Value="/usr/bin/fpc" Date="1449326971"/>
-  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq -Fi/home/otoja/PROJECTS/AnalogDiscovery2/simplescope1/lib/i386-linux -Fl/opt/gnome/lib -Fu/home/otoja/PROJECTS/AnalogDiscovery2/dwf -Fu/usr/share/lazarus/1.6.2/components/tachart/lib/i386-linux/gtk2 -Fu/usr/share/lazarus/1.6.2/components/ueControls/lib/i386-linux -Fu/usr/share/lazarus/1.6.2/components/ideintf/units/i386-linux/gtk2 -Fu/usr/share/lazarus/1.6.2/components/lazcontrols/lib/i386-linux/gtk2 -Fu/usr/share/lazarus/1.6.2/components/bgrabitmap/lib/i386-linux/3.0.0 -Fu/usr/share/lazarus/1.6.2/lcl/units/i386-linux/gtk2 -Fu/usr/share/lazarus/1.6.2/lcl/units/i386-linux -Fu/usr/share/lazarus/1.6.2/components/lazutils/lib/i386-linux -Fu/usr/share/lazarus/1.6.2/packager/units/i386-linux -Fu/home/otoja/PROJECTS/AnalogDiscovery2/simplescope1/ -FU/home/otoja/PROJECTS/AnalogDiscovery2/simplescope1/lib/i386-linux/ -dUseCThreads -dLCL -dLCLgtk2 simplescope1.lpr"/>
-</CONFIG>
