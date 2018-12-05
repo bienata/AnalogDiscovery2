@@ -1,4 +1,14 @@
 unit Dwf;
+(*                                                                                    *)
+(* dwf.pas                                                                            *)
+(* based on a true story from /usr/share/digilent/waveforms/manual/dwfsdk.pdf         *)
+(* the dwf.h C-header file translated to Free Pascal unit, use it at your own risk :) *)
+(* to use the AD2 box features simply add dwf.pas file to your project includes       *)
+(*                                                                                    *)
+(* the content below is subject of change and improvements without any prior notice   *)
+(*                                                                                    *)
+(* by Natasza Biecek, tasza (c) 2018, #slowanawiatr, http://bienata.waw.pl            *)
+(*                                                                                    *)
 
 {$IFDEF FPC}
 {$PACKRECORDS C}
@@ -30,8 +40,7 @@ type TDwfDoubleArr32 =  array [0..31] of double;
 type PInteger = ^integer;
 type PDouble = ^double;
 type PSmallInt = ^smallint;
-type BOOL = integer;
-type PBOOL = ^integer;
+type PBoolean = ^boolean;
 
 // hardware device handle
 type HDWF = integer;
@@ -258,7 +267,7 @@ function FDwfEnum( enumfilter : ENUMFILTER; pcDevice : PInteger )    : boolean ;
 
 
 function FDwfEnumDeviceType(idxDevice : integer; pDeviceId : PDEVID; pDeviceRevision : PDEVVER)    : boolean ; extdecl; external dwf_lib;
-function FDwfEnumDeviceIsOpened(idxDevice : integer; pfIsUsed : PBOOL)   : boolean ; extdecl; external dwf_lib;
+function FDwfEnumDeviceIsOpened(idxDevice : integer; pfIsUsed : PBoolean)   : boolean ; extdecl; external dwf_lib;
 function FDwfEnumUserName( idxDevice : integer; var szUserName : TDwfString32 )    : boolean ; extdecl; external dwf_lib;
 function FDwfEnumDeviceName(idxDevice : integer; var szDeviceName : TDwfString32)    : boolean ; extdecl; external dwf_lib;
 function FDwfEnumSN(idxDevice : integer; var szSN : TDwfString32)   : boolean ; extdecl; external dwf_lib;
@@ -271,13 +280,12 @@ function FDwfDeviceOpen(idxDevice : integer; phdwf : PHDWF)    : boolean ; extde
 function FDwfDeviceConfigOpen(idxDev: integer; idxCfg: integer; phdwf : PHDWF )   : boolean ; extdecl; external dwf_lib;
 function FDwfDeviceClose(hdwf : HDWF )   : boolean ; extdecl; external dwf_lib;
 function FDwfDeviceCloseAll    : boolean ; extdecl; external dwf_lib;
-function FDwfDeviceAutoConfigureSet(hdwf : HDWF; fAutoConfigure : BOOL)   : boolean ; extdecl; external dwf_lib;
-function FDwfDeviceAutoConfigureGet(hdwf : HDWF; pfAutoConfigure : PBOOL)   : boolean ; extdecl; external dwf_lib;
+function FDwfDeviceAutoConfigureSet(hdwf : HDWF; fAutoConfigure : boolean)   : boolean ; extdecl; external dwf_lib;
+function FDwfDeviceAutoConfigureGet(hdwf : HDWF; pfAutoConfigure : PBoolean)   : boolean ; extdecl; external dwf_lib;
 function FDwfDeviceReset(hdwf : HDWF)   : boolean ; extdecl; external dwf_lib;
-function FDwfDeviceEnableSet(hdwf : HDWF; fEnable : BOOL)  : boolean ; extdecl; external dwf_lib;
+function FDwfDeviceEnableSet(hdwf : HDWF; fEnable : boolean)  : boolean ; extdecl; external dwf_lib;
 function FDwfDeviceTriggerInfo(hdwf : HDWF; pfstrigsrc : PInteger)   : boolean ; extdecl; external dwf_lib; // use IsBitSet
 function FDwfDeviceTriggerSet(hdwf : HDWF; idxPin: integer;  trigsrc : TRIGSRC)   : boolean ; extdecl; external dwf_lib;
-
 function FDwfDeviceTriggerGet(hdwf : HDWF; idxPin: integer;  ptrigsrc : PTRIGSRC )   : boolean ; extdecl; external dwf_lib;
 function FDwfDeviceTriggerPC(hdwf : HDWF)  : boolean ; extdecl; external dwf_lib;
 function FDwfDeviceTriggerSlopeInfo(hdwf : HDWF; pfsslope : PInteger)  : boolean ; extdecl; external dwf_lib;// use IsBitSet
@@ -286,22 +294,19 @@ function FDwfDeviceTriggerSlopeInfo(hdwf : HDWF; pfsslope : PInteger)  : boolean
 // ANALOG IN INSTRUMENT FUNCTIONS
 // Control and status: 
 function FDwfAnalogInReset(hdwf : HDWF)   : boolean ; extdecl; external dwf_lib;
-//function FDwfAnalogInConfigure(hdwf : HDWF; fReconfigure:BOOL;  fStart : BOOL)   : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInConfigure(hdwf : HDWF; fReconfigure: boolean;  fStart : boolean)   : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInTriggerForce(hdwf : HDWF)   : boolean ; extdecl; external dwf_lib;
-//function FDwfAnalogInStatus(hdwf : HDWF;  fReadData:BOOL; psts : PDwfState)   : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInStatus(hdwf : HDWF;  fReadData:boolean; psts : PDwfState)   : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInStatusSamplesLeft(hdwf : HDWF; pcSamplesLeft : PInteger)   : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInStatusSamplesValid(hdwf : HDWF; pcSamplesValid: PInteger)   : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInStatusIndexWrite(hdwf : HDWF; pidxWrite: PInteger)   : boolean ; extdecl; external dwf_lib;
-function FDwfAnalogInStatusAutoTriggered(hdwf : HDWF; pfAuto : PBOOL )   : boolean ; extdecl; external dwf_lib;
+function FDwfAnalogInStatusAutoTriggered(hdwf : HDWF; pfAuto : PBoolean )   : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInStatusData(hdwf : HDWF; idxChannel : integer; rgdVoltData :PDouble; cdData : integer)   : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInStatusData2(hdwf : HDWF; idxChannel : integer; rgdVoltData :PDouble; idxData : integer; cdData : integer)   : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInStatusData16(hdwf : HDWF; idxChannel : integer; rgu16Data : PSmallInt; idxData : integer; cdData : integer)   : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInStatusNoise(hdwf : HDWF; idxChannel : integer; rgdMin : PDouble; rgdMax :PDouble; cdData : integer)  : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInStatusNoise2(hdwf : HDWF; idxChannel : integer; rgdMin : PDouble; rgdMax :PDouble; idxData : integer;  cdData : integer)   : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInStatusSample(hdwf : HDWF; idxChannel : integer; pdVoltSample :PDouble)   : boolean ; extdecl; external dwf_lib;
-
 function FDwfAnalogInStatusRecord(hdwf : HDWF; pcdDataAvailable : PInteger; pcdDataLost : PInteger; pcdDataCorrupt : PInteger)  : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInRecordLengthSet(hdwf : HDWF;  sLegth : double)   : boolean ; extdecl; external dwf_lib;
 function FDwfAnalogInRecordLengthGet(hdwf : HDWF; psLegth : PDouble)   : boolean ; extdecl; external dwf_lib;
@@ -330,8 +335,8 @@ function   FDwfAnalogInAcquisitionModeGet(hdwf : HDWF ; pacqmode : PACQMODE)   :
 
 // Channel configuration:
 function   FDwfAnalogInChannelCount(hdwf : HDWF ; pcChannel : PInteger)   : boolean ; extdecl; external dwf_lib;
-function   FDwfAnalogInChannelEnableSet(hdwf : HDWF ; idxChannel : integer;  fEnable:BOOL)   : boolean ; extdecl; external dwf_lib;
-function   FDwfAnalogInChannelEnableGet(hdwf : HDWF ; idxChannel : integer; pfEnable : PBOOL)   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogInChannelEnableSet(hdwf : HDWF ; idxChannel : integer;  fEnable:boolean)   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogInChannelEnableGet(hdwf : HDWF ; idxChannel : integer; pfEnable : PBoolean)   : boolean ; extdecl; external dwf_lib;
 function   FDwfAnalogInChannelFilterInfo(hdwf : HDWF ; pfsfilter : PInteger)   : boolean ; extdecl; external dwf_lib; // use IsBitSet
 function   FDwfAnalogInChannelFilterSet(hdwf : HDWF ; idxChannel : integer; filter : FILTER)   : boolean ; extdecl; external dwf_lib;
 function   FDwfAnalogInChannelFilterGet(hdwf : HDWF ; idxChannel : integer; pfilter : PFILTER)   : boolean ; extdecl; external dwf_lib;
@@ -406,8 +411,6 @@ function   FDwfAnalogInSamplingDelaySet(hdwf : HDWF ; sec : double )   : boolean
 function   FDwfAnalogInSamplingDelayGet(hdwf : HDWF ; psec : PDouble)   : boolean ; extdecl; external dwf_lib;
 
 
-
-
 // ANALOG OUT INSTRUMENT FUNCTIONS
 // Configuration:
 function   FDwfAnalogOutCount(hdwf : HDWF ; pcChannel : PInteger)   : boolean ; extdecl; external dwf_lib;
@@ -435,8 +438,8 @@ function   FDwfAnalogOutRepeatSet(hdwf : HDWF ; idxChannel : integer; cRepeat : 
 function   FDwfAnalogOutRepeatGet(hdwf : HDWF ;  idxChannel : integer; pcRepeat : PInteger)   : boolean ; extdecl; external dwf_lib;
 function   FDwfAnalogOutRepeatStatus(hdwf : HDWF ;  idxChannel : integer; pcRepeat: PInteger)   : boolean ; extdecl; external dwf_lib;
 
-function   FDwfAnalogOutRepeatTriggerSet(hdwf : HDWF ; idxChannel : integer;  fRepeatTrigger : BOOL)   : boolean ; extdecl; external dwf_lib;
-function   FDwfAnalogOutRepeatTriggerGet(hdwf : HDWF ; idxChannel : integer; pfRepeatTrigger : PBOOL )   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogOutRepeatTriggerSet(hdwf : HDWF ; idxChannel : integer;  fRepeatTrigger : boolean)   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogOutRepeatTriggerGet(hdwf : HDWF ; idxChannel : integer; pfRepeatTrigger : PBoolean )   : boolean ; extdecl; external dwf_lib;
 
 
 
@@ -454,8 +457,8 @@ function   FDwfAnalogOutIdleGet(hdwf : HDWF ;  idxChannel : integer; pidle : PDw
 
 function   FDwfAnalogOutNodeInfo(hdwf : HDWF ; idxChannel : integer; pfsnode : PInteger)   : boolean ; extdecl; external dwf_lib; // use IsBitSet
 
-function   FDwfAnalogOutNodeEnableSet(hdwf : HDWF ;  idxChannel : integer;  node : AnalogOutNode;  fEnable : BOOL )   : boolean ; extdecl; external dwf_lib;
-function   FDwfAnalogOutNodeEnableGet(hdwf : HDWF ;  idxChannel : integer; node : AnalogOutNode ; pfEnable : PBOOL )   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogOutNodeEnableSet(hdwf : HDWF ;  idxChannel : integer;  node : AnalogOutNode;  fEnable : boolean )   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogOutNodeEnableGet(hdwf : HDWF ;  idxChannel : integer; node : AnalogOutNode ; pfEnable : PBoolean )   : boolean ; extdecl; external dwf_lib;
 
 function   FDwfAnalogOutNodeFunctionInfo(hdwf : HDWF ;  idxChannel : integer;  node : AnalogOutNode; pfsfunc : PInteger) : boolean ; extdecl; external dwf_lib; // use IsBitSet
 function   FDwfAnalogOutNodeFunctionSet(hdwf : HDWF ;  idxChannel : integer;  node : AnalogOutNode;  func : FUNC)   : boolean ; extdecl; external dwf_lib;
@@ -489,12 +492,12 @@ function   FDwfAnalogOutNodeDataSet(hdwf : HDWF ; idxChannel :  integer; node:An
 
 
 // needed for EExplorer; not used for ADiscovery
-function   FDwfAnalogOutCustomAMFMEnableSet(hdwf : HDWF ; idxChannel : integer;  fEnable : BOOL)   : boolean ; extdecl; external dwf_lib;
-function   FDwfAnalogOutCustomAMFMEnableGet(hdwf : HDWF ; idxChannel : integer; pfEnable : PBOOL)   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogOutCustomAMFMEnableSet(hdwf : HDWF ; idxChannel : integer;  fEnable : boolean)   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogOutCustomAMFMEnableGet(hdwf : HDWF ; idxChannel : integer; pfEnable : PBoolean)   : boolean ; extdecl; external dwf_lib;
 
 // Control:
 function   FDwfAnalogOutReset(hdwf : HDWF ; idxChannel : integer)   : boolean ; extdecl; external dwf_lib;
-function   FDwfAnalogOutConfigure(hdwf : HDWF ; idxChannel : integer; fStart : BOOL )   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogOutConfigure(hdwf : HDWF ; idxChannel : integer; fStart : boolean )   : boolean ; extdecl; external dwf_lib;
 function   FDwfAnalogOutStatus(hdwf : HDWF ; idxChannel : integer; psts : PDwfState )   : boolean ; extdecl; external dwf_lib;
 function   FDwfAnalogOutNodePlayStatus(hdwf : HDWF ; idxChannel : integer;  node : AnalogOutNode; cdDataFree:PInteger; cdDataLost:PInteger; cdDataCorrupted:PInteger)   : boolean ; extdecl; external dwf_lib;
 function   FDwfAnalogOutNodePlayData(hdwf : HDWF ; idxChannel : integer;  node :AnalogOutNode; rgdData: PDouble; cdData:integer)   : boolean ; extdecl; external dwf_lib;
@@ -508,10 +511,10 @@ function   FDwfAnalogIOConfigure(hdwf : HDWF )   : boolean ; extdecl; external d
 function   FDwfAnalogIOStatus(hdwf : HDWF )   : boolean ; extdecl; external dwf_lib;
 
 // Configure:
-function   FDwfAnalogIOEnableInfo(hdwf : HDWF ; pfSet : PBOOL; pfStatus : PBOOL)   : boolean ; extdecl; external dwf_lib;
-function   FDwfAnalogIOEnableSet(hdwf : HDWF ;  fMasterEnable : (*BOOL*) boolean)   : boolean ; extdecl; external dwf_lib;
-function   FDwfAnalogIOEnableGet(hdwf : HDWF ; pfMasterEnable : PBOOL)   : boolean ; extdecl; external dwf_lib;
-function   FDwfAnalogIOEnableStatus(hdwf : HDWF ; pfMasterEnable : PBOOL)   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogIOEnableInfo(hdwf : HDWF ; pfSet : PBoolean; pfStatus : PBoolean)   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogIOEnableSet(hdwf : HDWF ;  fMasterEnable : (*boolean*) boolean)   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogIOEnableGet(hdwf : HDWF ; pfMasterEnable : PBoolean)   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogIOEnableStatus(hdwf : HDWF ; pfMasterEnable : PBoolean)   : boolean ; extdecl; external dwf_lib;
 function   FDwfAnalogIOChannelCount(hdwf : HDWF ; pnChannel: PInteger)   : boolean ; extdecl; external dwf_lib;
 function   FDwfAnalogIOChannelName(hdwf : HDWF ; idxChannel : integer; var szName : TDwfString32; var szLabel: TDwfString16 )   : boolean ; extdecl; external dwf_lib;
 function   FDwfAnalogIOChannelInfo(hdwf : HDWF ; idxChannel : integer; pnNodes : PInteger)   : boolean ; extdecl; external dwf_lib;
@@ -554,12 +557,12 @@ function   FDwfDigitalIOInputStatus64(hdwf : HDWF ; pfsInput:PQWORD)   : boolean
 // DIGITAL IN INSTRUMENT FUNCTIONS
 // Control and status: 
 function   FDwfDigitalInReset(hdwf : HDWF )    : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalInConfigure(hdwf : HDWF ;  fReconfigure : BOOL;  fStart : BOOL )   : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalInStatus(hdwf : HDWF ;  fReadData : BOOL; psts : PDwfState)   : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInConfigure(hdwf : HDWF ;  fReconfigure : boolean;  fStart : boolean )   : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInStatus(hdwf : HDWF ;  fReadData : boolean; psts : PDwfState)   : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalInStatusSamplesLeft(hdwf : HDWF ; pcSamplesLeft : PInteger)   : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalInStatusSamplesValid(hdwf : HDWF ; pcSamplesValid : PInteger)   : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalInStatusIndexWrite(hdwf : HDWF ; pidxWrite : PInteger)   : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalInStatusAutoTriggered(hdwf : HDWF ; pfAuto : PBOOL )   : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInStatusAutoTriggered(hdwf : HDWF ; pfAuto : PBoolean )   : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalInStatusData(hdwf : HDWF ; rgData : pointer; countOfDataBytes : integer)   : boolean ; extdecl; external dwf_lib; (* VOID* !!??? *)
 function   FDwfDigitalInStatusData2(hdwf : HDWF ; rgData : pointer ; idxSample : integer ; countOfDataBytes : integer)   : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalInStatusNoise2(hdwf : HDWF ; rgData : pointer; idxSample : integer; countOfDataBytes : integer)   : boolean ; extdecl; external dwf_lib;
@@ -575,26 +578,26 @@ function   FDwfDigitalInClockSourceGet(hdwf : HDWF ; pv : PDwfDigitalInClockSour
 
 function   FDwfDigitalInDividerInfo(hdwf : HDWF ; pdivMax : PInteger)   : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalInDividerSet(hdwf : HDWF ;  divider : integer )   : boolean ; extdecl; external dwf_lib; (* `div` is a keyword!*)
-function   FDwfDigitalInDividerGet(hdwf : HDWF ; pdiv : pinteger)   : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInDividerGet(hdwf : HDWF ; pdiv : PInteger)   : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalInBitsInfo(hdwf : HDWF ; pnBits : pinteger)   : boolean ; extdecl; external dwf_lib; // Returns the number of Digital In bits
+function   FDwfDigitalInBitsInfo(hdwf : HDWF ; pnBits : PInteger)   : boolean ; extdecl; external dwf_lib; // Returns the number of Digital In bits
 function   FDwfDigitalInSampleFormatSet(hdwf : HDWF ; nBits : integer )   : boolean ; extdecl; external dwf_lib;  // valid options 8/16/32
-function   FDwfDigitalInSampleFormatGet(hdwf : HDWF ; pnBits : pinteger )   : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInSampleFormatGet(hdwf : HDWF ; pnBits : PInteger )   : boolean ; extdecl; external dwf_lib;
 
 function   FDwfDigitalInInputOrderSet(hdwf : HDWF ; fDioFirst : boolean )   : boolean ; extdecl; external dwf_lib; // for Digital Discovery
 
-function   FDwfDigitalInBufferSizeInfo(hdwf : HDWF ; pnSizeMax : pinteger)   : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInBufferSizeInfo(hdwf : HDWF ; pnSizeMax : PInteger)   : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalInBufferSizeSet(hdwf : HDWF ; nSize : integer)   : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalInBufferSizeGet(hdwf : HDWF ; pnSize : pinteger)   : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInBufferSizeGet(hdwf : HDWF ; pnSize : PInteger)   : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalInSampleModeInfo(hdwf : HDWF ; pfsDwfDigitalInSampleMode : pinteger)   : boolean ; extdecl; external dwf_lib; // use IsBitSet
+function   FDwfDigitalInSampleModeInfo(hdwf : HDWF ; pfsDwfDigitalInSampleMode : PInteger)   : boolean ; extdecl; external dwf_lib; // use IsBitSet
 function   FDwfDigitalInSampleModeSet(hdwf : HDWF ;  v : DwfDigitalInSampleMode)   : boolean ; extdecl; external dwf_lib;  //
 function   FDwfDigitalInSampleModeGet(hdwf : HDWF ;  pv : PDwfDigitalInSampleMode)   : boolean ; extdecl; external dwf_lib;
 
 function   FDwfDigitalInSampleSensibleSet(hdwf : HDWF ; fs : integer)   : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalInSampleSensibleGet(hdwf : HDWF ; pfs : pinteger)   : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInSampleSensibleGet(hdwf : HDWF ; pfs : PInteger)   : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalInAcquisitionModeInfo(hdwf : HDWF ; pfsacqmode : pinteger)   : boolean ; extdecl; external dwf_lib; // use IsBitSet
+function   FDwfDigitalInAcquisitionModeInfo(hdwf : HDWF ; pfsacqmode : PInteger)   : boolean ; extdecl; external dwf_lib; // use IsBitSet
 function   FDwfDigitalInAcquisitionModeSet(hdwf : HDWF ;  acqmode : ACQMODE)   : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalInAcquisitionModeGet(hdwf : HDWF ; pacqmode : PACQMODE )   : boolean ; extdecl; external dwf_lib;
 
@@ -606,20 +609,20 @@ function   FDwfDigitalInTriggerSourceGet(hdwf : HDWF ; ptrigsrc : PTRIGSRC)  : b
 function   FDwfDigitalInTriggerSlopeSet(hdwf : HDWF ;  slope : DwfTriggerSlope)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalInTriggerSlopeGet(hdwf : HDWF ; pslope : PDwfTriggerSlope )  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalInTriggerPositionInfo(hdwf : HDWF ; pnSamplesAfterTriggerMax : pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInTriggerPositionInfo(hdwf : HDWF ; pnSamplesAfterTriggerMax : PInteger)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalInTriggerPositionSet(hdwf : HDWF ; cSamplesAfterTrigger : integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalInTriggerPositionGet(hdwf : HDWF ; pcSamplesAfterTrigger: pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInTriggerPositionGet(hdwf : HDWF ; pcSamplesAfterTrigger: PInteger)  : boolean ; extdecl; external dwf_lib;
 
 function   FDwfDigitalInTriggerPrefillSet(hdwf : HDWF ; cSamplesBeforeTrigger : integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalInTriggerPrefillGet(hdwf : HDWF ; pcSamplesBeforeTrigger : pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInTriggerPrefillGet(hdwf : HDWF ; pcSamplesBeforeTrigger : PInteger)  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalInTriggerAutoTimeoutInfo(hdwf : HDWF ; psecMin : pdouble;  psecMax :pdouble ; pnSteps:pdouble)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInTriggerAutoTimeoutInfo(hdwf : HDWF ; psecMin : PDouble;  psecMax :PDouble ; pnSteps:PDouble)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalInTriggerAutoTimeoutSet(hdwf : HDWF ; secTimeout : double)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalInTriggerAutoTimeoutGet(hdwf : HDWF ; psecTimeout : pdouble )  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInTriggerAutoTimeoutGet(hdwf : HDWF ; psecTimeout : PDouble )  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalInTriggerInfo(hdwf : HDWF ; pfsLevelLow : pinteger; pfsLevelHigh : pinteger; pfsEdgeRise : pinteger; pfsEdgeFall : pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInTriggerInfo(hdwf : HDWF ; pfsLevelLow : PInteger; pfsLevelHigh : PInteger; pfsEdgeRise : PInteger; pfsEdgeFall : PInteger)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalInTriggerSet(hdwf : HDWF ; fsLevelLow : integer; fsLevelHigh : integer; fsEdgeRise : integer; fsEdgeFall : integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalInTriggerGet(hdwf : HDWF ; pfsLevelLow : pinteger; pfsLevelHigh : pinteger; pfsEdgeRise : pinteger; pfsEdgeFall : pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInTriggerGet(hdwf : HDWF ; pfsLevelLow : PInteger; pfsLevelHigh : PInteger; pfsEdgeRise : PInteger; pfsEdgeFall : PInteger)  : boolean ; extdecl; external dwf_lib;
 
 // the logic for trigger bits: Low and High and (Rise or Fall)
 // bits set in Rise and Fall means any edge
@@ -633,66 +636,66 @@ function   FDwfDigitalInTriggerMatchSet(hdwf : HDWF ; iPin : integer; fsMask : i
 // DIGITAL OUT INSTRUMENT FUNCTIONS
 // Control:
 function   FDwfDigitalOutReset(hdwf : HDWF )  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutConfigure(hdwf : HDWF ;  fStart : BOOL)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutConfigure(hdwf : HDWF ;  fStart : boolean)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutStatus(hdwf : HDWF ; psts : PDwfState)  : boolean ; extdecl; external dwf_lib;
 
 // Configuration:
-function   FDwfDigitalOutInternalClockInfo(hdwf : HDWF ; phzFreq : pdouble)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutInternalClockInfo(hdwf : HDWF ; phzFreq : PDouble)  : boolean ; extdecl; external dwf_lib;
 
 function   FDwfDigitalOutTriggerSourceSet(hdwf : HDWF ; trigsrc : TRIGSRC)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutTriggerSourceGet(hdwf : HDWF ; ptrigsrc : PTRIGSRC)  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalOutRunInfo(hdwf : HDWF ;  psecMin : pdouble ; psecMax : pdouble)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutRunInfo(hdwf : HDWF ;  psecMin : PDouble ; psecMax : PDouble)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutRunSet(hdwf : HDWF ;  secRun : double)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutRunGet(hdwf : HDWF ; psecRun : pdouble )  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutRunStatus(hdwf : HDWF ; psecRun : pdouble)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutRunGet(hdwf : HDWF ; psecRun : PDouble )  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutRunStatus(hdwf : HDWF ; psecRun : PDouble)  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalOutWaitInfo(hdwf : HDWF ; psecMin : pdouble; psecMax : pdouble )  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutWaitInfo(hdwf : HDWF ; psecMin : PDouble; psecMax : PDouble )  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutWaitSet(hdwf : HDWF ; secWait : double)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutWaitGet(hdwf : HDWF ; psecWait : pdouble)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutWaitGet(hdwf : HDWF ; psecWait : PDouble)  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalOutRepeatInfo(hdwf : HDWF ; pnMin : pinteger; pnMax : pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutRepeatInfo(hdwf : HDWF ; pnMin : PInteger; pnMax : PInteger)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutRepeatSet(hdwf : HDWF ; cRepeat : integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutRepeatGet(hdwf : HDWF ; pcRepeat : pinteger)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutRepeatStatus(hdwf : HDWF ; pcRepeat : pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutRepeatGet(hdwf : HDWF ; pcRepeat : PInteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutRepeatStatus(hdwf : HDWF ; pcRepeat : PInteger)  : boolean ; extdecl; external dwf_lib;
 
 function   FDwfDigitalOutTriggerSlopeSet(hdwf : HDWF ;  slope : DwfTriggerSlope)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutTriggerSlopeGet(hdwf : HDWF ; pslope : PDwfTriggerSlope )  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalOutRepeatTriggerSet(hdwf : HDWF ; fRepeatTrigger : BOOL )  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutRepeatTriggerGet(hdwf : HDWF ; pfRepeatTrigger : PBOOL )  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutRepeatTriggerSet(hdwf : HDWF ; fRepeatTrigger : boolean )  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutRepeatTriggerGet(hdwf : HDWF ; pfRepeatTrigger : PBoolean )  : boolean ; extdecl; external dwf_lib;
 
 
 
-function   FDwfDigitalOutCount(hdwf : HDWF ; pcChannel : pinteger)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutEnableSet(hdwf : HDWF ; idxChannel : integer;  fEnable : BOOL)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutEnableGet(hdwf : HDWF ; idxChannel : integer; pfEnable : PBOOL)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutCount(hdwf : HDWF ; pcChannel : PInteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutEnableSet(hdwf : HDWF ; idxChannel : integer;  fEnable : boolean)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutEnableGet(hdwf : HDWF ; idxChannel : integer; pfEnable : PBoolean)  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalOutOutputInfo(hdwf : HDWF ; idxChannel : integer; pfsDwfDigitalOutOutput:pinteger)  : boolean ; extdecl; external dwf_lib; // use IsBitSet
+function   FDwfDigitalOutOutputInfo(hdwf : HDWF ; idxChannel : integer; pfsDwfDigitalOutOutput:PInteger)  : boolean ; extdecl; external dwf_lib; // use IsBitSet
 function   FDwfDigitalOutOutputSet(hdwf : HDWF ; idxChannel : integer;  v : DwfDigitalOutOutput)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutOutputGet(hdwf : HDWF ; idxChannel : integer; pv : PDwfDigitalOutOutput )  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalOutTypeInfo(hdwf : HDWF ; idxChannel : integer; pfsDwfDigitalOutType: pinteger)  : boolean ; extdecl; external dwf_lib; // use IsBitSet
+function   FDwfDigitalOutTypeInfo(hdwf : HDWF ; idxChannel : integer; pfsDwfDigitalOutType: PInteger)  : boolean ; extdecl; external dwf_lib; // use IsBitSet
 function   FDwfDigitalOutTypeSet(hdwf : HDWF ; idxChannel : integer;  v : DwfDigitalOutType)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutTypeGet(hdwf : HDWF ; idxChannel : integer; pv : PDwfDigitalOutType)  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalOutIdleInfo(hdwf : HDWF ; idxChannel : integer; pfsDwfDigitalOutIdle : pinteger)  : boolean ; extdecl; external dwf_lib; // use IsBitSet
+function   FDwfDigitalOutIdleInfo(hdwf : HDWF ; idxChannel : integer; pfsDwfDigitalOutIdle : PInteger)  : boolean ; extdecl; external dwf_lib; // use IsBitSet
 function   FDwfDigitalOutIdleSet(hdwf : HDWF ; idxChannel : integer;  v : DwfDigitalOutIdle)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutIdleGet(hdwf : HDWF ; idxChannel : integer; pv : PDwfDigitalOutIdle)  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalOutDividerInfo(hdwf : HDWF ; idxChannel : integer; vMin:pinteger; vMax:pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutDividerInfo(hdwf : HDWF ; idxChannel : integer; vMin:PInteger; vMax:PInteger)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutDividerInitSet(hdwf : HDWF ; idxChannel : integer; v:integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutDividerInitGet(hdwf : HDWF ; idxChannel : integer; pv : pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutDividerInitGet(hdwf : HDWF ; idxChannel : integer; pv : PInteger)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutDividerSet(hdwf : HDWF ; idxChannel : integer; v:integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutDividerGet(hdwf : HDWF ; idxChannel : integer; pv:pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutDividerGet(hdwf : HDWF ; idxChannel : integer; pv:PInteger)  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalOutCounterInfo(hdwf : HDWF ; idxChannel : integer; vMin:pinteger; vMax:pinteger)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutCounterInitSet(hdwf : HDWF ; idxChannel : integer; fHigh:BOOL ;  v:integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutCounterInitGet(hdwf : HDWF ; idxChannel : integer; pfHigh:pinteger; pv:pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutCounterInfo(hdwf : HDWF ; idxChannel : integer; vMin:PInteger; vMax:PInteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutCounterInitSet(hdwf : HDWF ; idxChannel : integer; fHigh:boolean ;  v:integer)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutCounterInitGet(hdwf : HDWF ; idxChannel : integer; pfHigh:PInteger; pv:PInteger)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutCounterSet(hdwf : HDWF ; idxChannel : integer; vLow:integer; vHigh:integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutCounterGet(hdwf : HDWF ; idxChannel : integer; pvLow:pinteger; pvHigh:pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutCounterGet(hdwf : HDWF ; idxChannel : integer; pvLow:PInteger; pvHigh:PInteger)  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalOutDataInfo(hdwf : HDWF ; idxChannel : integer; pcountOfBitsMax:pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutDataInfo(hdwf : HDWF ; idxChannel : integer; pcountOfBitsMax:PInteger)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutDataSet(hdwf : HDWF ; idxChannel : integer; rgBits:pointer; countOfBits:integer)  : boolean ; extdecl; external dwf_lib;
 // bits order is lsb first
 
@@ -711,7 +714,7 @@ function   FDwfDigitalUartTxSet(hdwf : HDWF ; idxChannel : integer)  : boolean ;
 function   FDwfDigitalUartRxSet(hdwf : HDWF ; idxChannel : integer)  : boolean ; extdecl; external dwf_lib;
 
 function   FDwfDigitalUartTx(hdwf : HDWF ; szTx:pchar ;  cTx:integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalUartRx(hdwf : HDWF ; szRx:pchar;  cRx:integer; pcRx:pinteger; pParity:pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalUartRx(hdwf : HDWF ; szRx:pchar;  cRx:integer; pcRx:PInteger; pParity:PInteger)  : boolean ; extdecl; external dwf_lib;
 
 function   FDwfDigitalSpiReset(hdwf : HDWF )  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalSpiFrequencySet(hdwf : HDWF ;  hz : double)  : boolean ; extdecl; external dwf_lib;
@@ -724,31 +727,31 @@ function   FDwfDigitalSpiSelect(hdwf : HDWF ; idxChannel : integer; level:intege
 // cDQ 0 SISO; 1 MOSI/MISO; 2 dual; 4 quad; // 1-32 bits / word
 function   FDwfDigitalSpiWriteRead(hdwf : HDWF ; cDQ : integer;  cBitPerWord : integer; rgTX:pchar; cTX:integer; rgRX:pchar;  cRX : integer)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalSpiWriteRead16(hdwf : HDWF ;  cDQ : integer; cBitPerWord : integer; rgTX:psmallint; cTX:integer; rgRX:psmallint;  cRX : integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalSpiWriteRead32(hdwf : HDWF ;  cDQ : integer;  cBitPerWord : integer; rgTX:pinteger;  cTX : integer; rgRX:pinteger;  cRX : integer)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalSpiWriteRead32(hdwf : HDWF ;  cDQ : integer;  cBitPerWord : integer; rgTX:PInteger;  cTX : integer; rgRX:PInteger;  cRX : integer)  : boolean ; extdecl; external dwf_lib;
 
 function   FDwfDigitalSpiRead(hdwf : HDWF ; cDQ : integer; cBitPerWord : integer; rgRX:pchar;  cRX : integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalSpiReadOne(hdwf : HDWF ;  cDQ : integer;  cBitPerWord : integer; pRX : pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalSpiReadOne(hdwf : HDWF ;  cDQ : integer;  cBitPerWord : integer; pRX : PInteger)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalSpiRead16(hdwf : HDWF ;  cDQ : integer;  cBitPerWord : integer; rgRX:PSmallInt;  cRX : integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalSpiRead32(hdwf : HDWF ; cDQ : integer; cBitPerWord : integer; rgRX:pinteger; cRX : integer)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalSpiRead32(hdwf : HDWF ; cDQ : integer; cBitPerWord : integer; rgRX:PInteger; cRX : integer)  : boolean ; extdecl; external dwf_lib;
 
 function   FDwfDigitalSpiWrite(hdwf : HDWF ;  cDQ : integer; cBitPerWord : integer; rgTX:pchar; cTX : integer)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalSpiWriteOne(hdwf : HDWF ;  cDQ : integer; cBits : integer;  vTX : integer)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalSpiWrite16(hdwf : HDWF ;  cDQ : integer; cBitPerWord : integer; rgTX:PSmallInt;  cTX : integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalSpiWrite32(hdwf : HDWF ; cDQ : integer; cBitPerWord : integer; rgTX:pinteger; cTX : integer)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalSpiWrite32(hdwf : HDWF ; cDQ : integer; cBitPerWord : integer; rgTX:PInteger; cTX : integer)  : boolean ; extdecl; external dwf_lib;
 
 
 
 function   FDwfDigitalI2cReset(hdwf : HDWF )  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalI2cClear(hdwf : HDWF ; pfFree:pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalI2cClear(hdwf : HDWF ; pfFree:PInteger)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalI2cRateSet(hdwf : HDWF ;  hz:double)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalI2cReadNakSet(hdwf : HDWF ; fNakLastReadByte:integer)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalI2cSclSet(hdwf : HDWF ; idxChannel : integer)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalI2cSdaSet(hdwf : HDWF ; idxChannel : integer)  : boolean ; extdecl; external dwf_lib;
 
-function   FDwfDigitalI2cWriteRead(hdwf : HDWF ; adr8bits:byte; rgbTx:pbyte; cTx:integer; rgRx:pbyte; cRx:integer; pNak:pinteger)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalI2cRead(hdwf : HDWF ; adr8bits:byte; rgbRx:pbyte; cRx:integer; pNak:pinteger)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalI2cWrite(hdwf : HDWF ; adr8bits:byte; rgbTx:pbyte; cTx:integer; pNak:pinteger)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalI2cWriteOne(hdwf : HDWF ; adr8bits:byte; bTx:byte; pNak:pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalI2cWriteRead(hdwf : HDWF ; adr8bits:byte; rgbTx:pbyte; cTx:integer; rgRx:pbyte; cRx:integer; pNak:PInteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalI2cRead(hdwf : HDWF ; adr8bits:byte; rgbRx:pbyte; cRx:integer; pNak:PInteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalI2cWrite(hdwf : HDWF ; adr8bits:byte; rgbTx:pbyte; cTx:integer; pNak:PInteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalI2cWriteOne(hdwf : HDWF ; adr8bits:byte; bTx:byte; pNak:PInteger)  : boolean ; extdecl; external dwf_lib;
 
 function   FDwfDigitalCanReset(hdwf : HDWF )  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalCanRateSet(hdwf : HDWF ;  hz:double)  : boolean ; extdecl; external dwf_lib;
@@ -757,14 +760,14 @@ function   FDwfDigitalCanTxSet(hdwf : HDWF ; idxChannel : integer)  : boolean ; 
 function   FDwfDigitalCanRxSet(hdwf : HDWF ; idxChannel : integer)  : boolean ; extdecl; external dwf_lib;
 
 function   FDwfDigitalCanTx(hdwf : HDWF ; vID:integer; fExtended:integer; fRemote:integer;  cDLC:integer; rgTX:pchar)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalCanRx(hdwf : HDWF ; pvID:pinteger; pfExtended:pinteger; pfRemote:pinteger; pcDLC:pinteger; rgRX:pchar;  cRX:integer; pvStatus:pinteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalCanRx(hdwf : HDWF ; pvID:PInteger; pfExtended:PInteger; pfRemote:PInteger; pcDLC:PInteger; rgRX:pchar;  cRX:integer; pvStatus:PInteger)  : boolean ; extdecl; external dwf_lib;
 
 
 // OBSOLETE but supported; avoid using the following in new projects:
 
 // use FDwfDigitalInTriggerSourceSet trigsrcAnalogIn
 // call FDwfDigitalInConfigure before FDwfAnalogInConfigure
-function   FDwfDigitalInMixedSet(hdwf : HDWF ;  fEnable: BOOL)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalInMixedSet(hdwf : HDWF ;  fEnable: boolean)  : boolean ; extdecl; external dwf_lib;
    
    
 // use DwfTriggerSlope
@@ -796,8 +799,8 @@ const  stsStop : STS      = 10;
 
 
 // use FDwfAnalogOutNode*
-function   FDwfAnalogOutEnableSet(hdwf : HDWF ; idxChannel : integer;  fEnable : BOOL)   : boolean ; extdecl; external dwf_lib;
-function   FDwfAnalogOutEnableGet(hdwf : HDWF ; idxChannel : integer; pfEnable : PBOOL)   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogOutEnableSet(hdwf : HDWF ; idxChannel : integer;  fEnable : boolean)   : boolean ; extdecl; external dwf_lib;
+function   FDwfAnalogOutEnableGet(hdwf : HDWF ; idxChannel : integer; pfEnable : PBoolean)   : boolean ; extdecl; external dwf_lib;
 function   FDwfAnalogOutFunctionInfo(hdwf : HDWF ; idxChannel : integer; pfsfunc : PInteger)   : boolean ; extdecl; external dwf_lib;
 function   FDwfAnalogOutFunctionSet(hdwf : HDWF ; idxChannel : integer;  func : FUNC)  : boolean ; extdecl; external dwf_lib;
 function   FDwfAnalogOutFunctionGet(hdwf : HDWF ; idxChannel : integer; pfunc : PFUNC )  : boolean ; extdecl; external dwf_lib;
@@ -826,6 +829,29 @@ function   FDwfEnumAnalogInBufferSize(idxDevice : integer; pnBufferSize : PInteg
 function   FDwfEnumAnalogInBits(idxDevice : integer; pnBits : PInteger)  : boolean ; extdecl; external dwf_lib;
 function   FDwfEnumAnalogInFrequency(idxDevice : integer; phzFrequency : PDouble)  : boolean ; extdecl; external dwf_lib;
 
+(* human readable extensions by tasza  *)
+
+const adAnalogIoChannel_PositiveSupply  = 0;
+const adAnalogIoChannel_NegativeSupply  = 1;
+const adAnalogIoChannel_USBMonitor      = 2;
+const adAnalogIoChannel_AuxMonitor      = 3;
+const adAnalogIoChannel_PowerSupply     = 4; // hgw :(
+
+// posivive and negative both
+const adAnalogIoNode_Supply_Enable     = 0;
+const adAnalogIoNode_Supply_Voltage    = 1;
+const adAnalogIoNode_Supply_Current    = 2;        
+
+const adAnalogIoNode_USBMonitor_Voltage         = 0;
+const adAnalogIoNode_USBMonitor_Current         = 1;        
+const adAnalogIoNode_USBMonitor_Temperature     = 2;
+const adAnalogIoNode_USBMonitor_Always          = 3;        
+
+const adAnalogIoNode_AuxMonitor_Voltage         = 0;
+const adAnalogIoNode_AuxMonitor_Current         = 1;        
+
+const adAnalogIoNode_PowerSupply_Always         = 0;        
+    
 implementation
 
 end.
