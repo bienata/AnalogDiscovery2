@@ -1,0 +1,72 @@
+object MainForm: TMainForm
+  Left = 814
+  Height = 440
+  Top = 281
+  Width = 634
+  Caption = 'MainForm'
+  ClientHeight = 440
+  ClientWidth = 634
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '1.6.2.0'
+  object Chart1: TChart
+    Left = 24
+    Height = 416
+    Top = 8
+    Width = 536
+    AxisList = <    
+      item
+        Minors = <>
+        Range.Max = 5
+        Range.Min = -5
+        Range.UseMax = True
+        Range.UseMin = True
+        Title.LabelFont.Orientation = 900
+      end    
+      item
+        Alignment = calBottom
+        Minors = <>
+      end>
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    object WaveLineSeries1: TLineSeries
+      LinePen.Width = 3
+    end
+    object TriggerConstantLine1: TConstantLine
+      Pen.Color = clRed
+      Position = 0
+    end
+  end
+  object TrackBar1: TTrackBar
+    Left = 568
+    Height = 288
+    Top = 56
+    Width = 48
+    Max = 20
+    Min = -20
+    OnChange = TrackBar1Change
+    Orientation = trVertical
+    Position = 0
+    Reversed = True
+    TabOrder = 1
+  end
+  object Label1: TLabel
+    Left = 568
+    Height = 14
+    Top = 360
+    Width = 38
+    Caption = 'Label1'
+    ParentColor = False
+  end
+  object RefreshTimer: TTimer
+    Enabled = False
+    OnTimer = RefreshTimerTimer
+    left = 16
+    top = 464
+  end
+end
