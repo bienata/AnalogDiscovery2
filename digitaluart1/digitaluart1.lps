@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="2">
+      <Unit0>
+        <Filename Value="digitaluart1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="27"/>
+        <CursorPos Y="45"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="../dwf/dwf.pas"/>
+        <UnitName Value="Dwf"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="698"/>
+        <CursorPos X="34" Y="712"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit1>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="20" TopLine="3"/>
+      </Position1>
+      <Position2>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="28" TopLine="17"/>
+      </Position2>
+      <Position3>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="30" TopLine="17"/>
+      </Position3>
+      <Position4>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="32" TopLine="17"/>
+      </Position4>
+      <Position5>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="34" TopLine="17"/>
+      </Position5>
+      <Position6>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="36" TopLine="17"/>
+      </Position6>
+      <Position7>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="40" TopLine="26"/>
+      </Position7>
+      <Position8>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="42" TopLine="26"/>
+      </Position8>
+      <Position9>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="44" TopLine="26"/>
+      </Position9>
+      <Position10>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="45" TopLine="26"/>
+      </Position10>
+      <Position11>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="46" TopLine="26"/>
+      </Position11>
+      <Position12>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="47" TopLine="26"/>
+      </Position12>
+      <Position13>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="48" TopLine="26"/>
+      </Position13>
+      <Position14>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="49" TopLine="26"/>
+      </Position14>
+      <Position15>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="44" TopLine="26"/>
+      </Position15>
+      <Position16>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="45" TopLine="26"/>
+      </Position16>
+      <Position17>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="46" TopLine="26"/>
+      </Position17>
+      <Position18>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="47" TopLine="26"/>
+      </Position18>
+      <Position19>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="48" TopLine="26"/>
+      </Position19>
+      <Position20>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="49" TopLine="26"/>
+      </Position20>
+      <Position21>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="44" TopLine="26"/>
+      </Position21>
+      <Position22>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="45" TopLine="26"/>
+      </Position22>
+      <Position23>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="46" TopLine="26"/>
+      </Position23>
+      <Position24>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="47" TopLine="26"/>
+      </Position24>
+      <Position25>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="48" TopLine="26"/>
+      </Position25>
+      <Position26>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="49" TopLine="26"/>
+      </Position26>
+      <Position27>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="44" TopLine="26"/>
+      </Position27>
+      <Position28>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="45" TopLine="26"/>
+      </Position28>
+      <Position29>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="46" TopLine="26"/>
+      </Position29>
+      <Position30>
+        <Filename Value="digitaluart1.lpr"/>
+        <Caret Line="47" TopLine="26"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
