@@ -41,7 +41,7 @@ begin
   writeln( 'sekwencyjnie, po jednym bajcie' );
   writeln( ' ' );
 
-  for i := 0 to $FFFF-1 do
+  for i := 0 to $FFFF do
   begin
        address [0] := (i shr 8) and $ff;
        address [1] := i and $ff;
@@ -56,12 +56,12 @@ begin
   writeln( ' ' );
 
   done := false;
-  for i := 0 to $ff-1 do
+  for i := 0 to $ff do
   begin
        address [0] := i;
        address [1] := 0; // czytamy paczkami po 256 bajtow
        FDwfDigitalI2cWriteRead (hAd2, $A0, @address, 2, @dataBuff, $ff, @nak );
-       for x := 0 to $ff-1 do
+       for x := 0 to $ff do
        begin
               if dataBuff[x] = $a then continue;
               if dataBuff[x] = $ff then
