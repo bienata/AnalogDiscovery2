@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="3">
+      <Unit0>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="37"/>
+        <CursorPos Y="57"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="../devinfo1/devtest1.lpr"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="53"/>
+        <CursorPos X="45" Y="72"/>
+        <UsageCount Value="23"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../dwf/dwf.pas"/>
+        <UnitName Value="Dwf"/>
+        <TopLine Value="731"/>
+        <CursorPos X="12" Y="745"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit2>
+    </Units>
+    <JumpHistory Count="23" HistoryIndex="22">
+      <Position1>
+        <Filename Value="../dwf/dwf.pas"/>
+        <Caret Line="19" Column="4" TopLine="5"/>
+      </Position1>
+      <Position2>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="33" Column="37" TopLine="13"/>
+      </Position2>
+      <Position3>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="19" Column="23" TopLine="8"/>
+      </Position3>
+      <Position4>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="20" TopLine="8"/>
+      </Position4>
+      <Position5>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="27" TopLine="8"/>
+      </Position5>
+      <Position6>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="28" TopLine="8"/>
+      </Position6>
+      <Position7>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="29" TopLine="11"/>
+      </Position7>
+      <Position8>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="31" TopLine="11"/>
+      </Position8>
+      <Position9>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="32" TopLine="17"/>
+      </Position9>
+      <Position10>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="38" TopLine="17"/>
+      </Position10>
+      <Position11>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="39" TopLine="17"/>
+      </Position11>
+      <Position12>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="41" TopLine="17"/>
+      </Position12>
+      <Position13>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="39" Column="32" TopLine="17"/>
+      </Position13>
+      <Position14>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="20" TopLine="15"/>
+      </Position14>
+      <Position15>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="27" TopLine="15"/>
+      </Position15>
+      <Position16>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="28" TopLine="15"/>
+      </Position16>
+      <Position17>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="29" TopLine="15"/>
+      </Position17>
+      <Position18>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="31" TopLine="15"/>
+      </Position18>
+      <Position19>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="32" TopLine="15"/>
+      </Position19>
+      <Position20>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="38" TopLine="15"/>
+      </Position20>
+      <Position21>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="39" TopLine="16"/>
+      </Position21>
+      <Position22>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="30" Column="20" TopLine="8"/>
+      </Position22>
+      <Position23>
+        <Filename Value="i2c_pcf8574_1.lpr"/>
+        <Caret Line="31" Column="5" TopLine="10"/>
+      </Position23>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

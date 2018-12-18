@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="3">
+      <Unit0>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="27"/>
+        <CursorPos X="25" Y="42"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="../devinfo1/devtest1.lpr"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="53"/>
+        <CursorPos X="45" Y="72"/>
+        <UsageCount Value="23"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../dwf/dwf.pas"/>
+        <UnitName Value="Dwf"/>
+        <TopLine Value="731"/>
+        <CursorPos X="12" Y="745"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit2>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="64" TopLine="43"/>
+      </Position1>
+      <Position2>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="61" TopLine="43"/>
+      </Position2>
+      <Position3>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="62" TopLine="43"/>
+      </Position3>
+      <Position4>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="63" TopLine="43"/>
+      </Position4>
+      <Position5>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="64" TopLine="43"/>
+      </Position5>
+      <Position6>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="61" TopLine="43"/>
+      </Position6>
+      <Position7>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="62" TopLine="43"/>
+      </Position7>
+      <Position8>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="63" TopLine="43"/>
+      </Position8>
+      <Position9>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="64" TopLine="43"/>
+      </Position9>
+      <Position10>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="61" TopLine="43"/>
+      </Position10>
+      <Position11>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="62" TopLine="43"/>
+      </Position11>
+      <Position12>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="63" TopLine="43"/>
+      </Position12>
+      <Position13>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="64" TopLine="43"/>
+      </Position13>
+      <Position14>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="61" TopLine="43"/>
+      </Position14>
+      <Position15>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="62" TopLine="43"/>
+      </Position15>
+      <Position16>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="63" TopLine="43"/>
+      </Position16>
+      <Position17>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="64" TopLine="43"/>
+      </Position17>
+      <Position18>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="61" TopLine="43"/>
+      </Position18>
+      <Position19>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="62" TopLine="43"/>
+      </Position19>
+      <Position20>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="63" TopLine="43"/>
+      </Position20>
+      <Position21>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="64" TopLine="43"/>
+      </Position21>
+      <Position22>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="61" TopLine="43"/>
+      </Position22>
+      <Position23>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="62" TopLine="43"/>
+      </Position23>
+      <Position24>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="63" TopLine="43"/>
+      </Position24>
+      <Position25>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="64" TopLine="43"/>
+      </Position25>
+      <Position26>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="61" TopLine="43"/>
+      </Position26>
+      <Position27>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="62" TopLine="43"/>
+      </Position27>
+      <Position28>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="63" TopLine="43"/>
+      </Position28>
+      <Position29>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="64" TopLine="43"/>
+      </Position29>
+      <Position30>
+        <Filename Value="i2c_24c512_1.lpr"/>
+        <Caret Line="47" Column="23" TopLine="27"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
