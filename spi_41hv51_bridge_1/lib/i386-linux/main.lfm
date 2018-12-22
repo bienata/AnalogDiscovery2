@@ -1,0 +1,54 @@
+object MainForm: TMainForm
+  Left = 1063
+  Height = 359
+  Top = 252
+  Width = 508
+  Caption = 'MainForm'
+  ClientHeight = 359
+  ClientWidth = 508
+  OnClose = FormClose
+  OnCreate = FormCreate
+  LCLVersion = '1.6.2.0'
+  object TrackBar1: TTrackBar
+    Left = 24
+    Height = 328
+    Top = 16
+    Width = 72
+    Max = 255
+    OnChange = TrackBar1Change
+    Orientation = trVertical
+    Position = 127
+    Reversed = True
+    ScalePos = trRight
+    ShowSelRange = False
+    TabOrder = 0
+  end
+  object R3Label: TLabel
+    Left = 104
+    Height = 14
+    Top = 24
+    Width = 46
+    Caption = 'R3Label'
+    ParentColor = False
+  end
+  object R4Label: TLabel
+    Left = 104
+    Height = 14
+    Top = 56
+    Width = 46
+    Caption = 'R4Label'
+    ParentColor = False
+  end
+  object RxPanel: TPanel
+    Left = 104
+    Height = 144
+    Top = 96
+    Width = 328
+    Caption = 'RxPanel'
+    Font.Height = -18
+    Font.Name = 'Sans'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+  end
+end

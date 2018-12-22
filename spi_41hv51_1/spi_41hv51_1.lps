@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="3">
+      <Unit0>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="17"/>
+        <CursorPos X="41" Y="37"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="../devinfo1/devtest1.lpr"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="53"/>
+        <CursorPos X="45" Y="72"/>
+        <UsageCount Value="23"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../dwf/dwf.pas"/>
+        <UnitName Value="Dwf"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="233"/>
+        <CursorPos Y="233"/>
+        <UsageCount Value="11"/>
+      </Unit2>
+    </Units>
+    <JumpHistory Count="25" HistoryIndex="24">
+      <Position1>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="40" TopLine="12"/>
+      </Position1>
+      <Position2>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="38" Column="31" TopLine="12"/>
+      </Position2>
+      <Position3>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="26" TopLine="12"/>
+      </Position3>
+      <Position4>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="27" TopLine="12"/>
+      </Position4>
+      <Position5>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="29" TopLine="12"/>
+      </Position5>
+      <Position6>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="30" TopLine="12"/>
+      </Position6>
+      <Position7>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="31" TopLine="12"/>
+      </Position7>
+      <Position8>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="33" TopLine="12"/>
+      </Position8>
+      <Position9>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="35" TopLine="12"/>
+      </Position9>
+      <Position10>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="37" TopLine="12"/>
+      </Position10>
+      <Position11>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="38" TopLine="12"/>
+      </Position11>
+      <Position12>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="39" TopLine="12"/>
+      </Position12>
+      <Position13>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="37" TopLine="12"/>
+      </Position13>
+      <Position14>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="38" TopLine="12"/>
+      </Position14>
+      <Position15>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="39" TopLine="12"/>
+      </Position15>
+      <Position16>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="37" TopLine="12"/>
+      </Position16>
+      <Position17>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="38" TopLine="12"/>
+      </Position17>
+      <Position18>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="39" TopLine="12"/>
+      </Position18>
+      <Position19>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="37" TopLine="12"/>
+      </Position19>
+      <Position20>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="38" TopLine="12"/>
+      </Position20>
+      <Position21>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="39" TopLine="12"/>
+      </Position21>
+      <Position22>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="37" TopLine="12"/>
+      </Position22>
+      <Position23>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="44" Column="39" TopLine="18"/>
+      </Position23>
+      <Position24>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="42" Column="59" TopLine="19"/>
+      </Position24>
+      <Position25>
+        <Filename Value="spi_41hv51_1.lpr"/>
+        <Caret Line="44" Column="49" TopLine="19"/>
+      </Position25>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

@@ -214,6 +214,47 @@ const  DwfAnalogOutIdleDisable :DwfAnalogOutIdle = 0;
 const DwfAnalogOutIdleOffset:DwfAnalogOutIdle   = 1;
 const DwfAnalogOutIdleInitial :DwfAnalogOutIdle = 2;
 
+
+const DIO_0 = 0;
+const DIO_1 = 1;
+const DIO_2 = 2;
+const DIO_3 = 3;
+const DIO_4 = 4;
+const DIO_5 = 5;
+const DIO_6 = 6;
+const DIO_7 = 7;
+const DIO_8 = 8;
+const DIO_9 = 9;
+const DIO_10 = 10;
+const DIO_11 = 11;
+const DIO_12 = 12;
+const DIO_13 = 13;
+const DIO_14 = 14;
+const DIO_15 = 15;
+
+const SPI_SEL_LOW = 0;
+const SPI_SEL_HIGH = 1;
+
+(*
+przypisanie funkcji to konkretnych linii i/o
+idxDQ – specify data index to set, 0 = DQ0_MOSI_SISO, 1 = DQ1_MISO, 2 = DQ2, 3 = DQ3
+*)
+const FUNC_DQ0_MOSI_SISO = 0; // wysylanie
+const FUNC_DQ1_MISO = 1;      // odbieranie
+const FUNC_DQ2 = 2;
+const FUNC_DQ3 = 3;
+
+(* parametr cDQ, z jakich zestawów linii DIO_x korzystamy
+  0 – SISO, use only DQ0 for read and write
+  1 – MISI/MISO, use DQ0 for write and DQ1 to read data
+  2 – dual, use DQ0 for even and DQ1 for odd bits
+  4 – quad, use DQ0 for 0,4,8..., DQ1 for 1,5,9..., DQ2 for 2,6,10..., DQ3 for 3,7,11... data bits
+*)
+const DQ_SISO = 0;
+const DQ_MOSI_MISO = 1; // DQ0 -> send (out), DQ1 <- rec (in)
+const DQ_DUAL = 2; // :/
+const DQ_QUAD = 3; // :((
+
 type DwfDigitalInClockSource = integer;
 type PDwfDigitalInClockSource = ^DwfDigitalInClockSource;
 const  DwfDigitalInClockSourceInternal : DwfDigitalInClockSource = 0;
