@@ -32,6 +32,9 @@ uses
 {$ENDIF}
 
 
+const ANALOGIN_0  = 0;
+const ANALOGIN_1  = 1;
+
 type TDwfString512 = array [0..511] of AnsiChar;
 type TDwfString32 =  array [0..31] of AnsiChar;
 type TDwfString16 =  array [0..15] of AnsiChar;

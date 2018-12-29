@@ -1,0 +1,35 @@
+object Form1: TForm1
+  Left = 1160
+  Height = 199
+  Top = 613
+  Width = 394
+  Caption = 'Form1'
+  ClientHeight = 199
+  ClientWidth = 394
+  OnClose = FormClose
+  OnCreate = FormCreate
+  LCLVersion = '1.6.2.0'
+  object TrackBar1: TTrackBar
+    Left = 16
+    Height = 45
+    Top = 40
+    Width = 320
+    Frequency = 10
+    Position = 5
+    TickStyle = tsManual
+    ParentShowHint = False
+    TabOrder = 0
+  end
+  object Edit1: TEdit
+    Left = 128
+    Height = 28
+    Top = 112
+    Width = 104
+    Font.Height = -18
+    Font.Name = 'Sans'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+    Text = 'Edit1'
+  end
+end
