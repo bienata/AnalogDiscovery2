@@ -44,6 +44,7 @@ type PInteger = ^integer;
 type PDouble = ^double;
 type PSmallInt = ^smallint;
 type PBoolean = ^boolean;
+type PCardinal = ^Cardinal;
 
 // hardware device handle
 type HDWF = integer;
@@ -730,8 +731,8 @@ function   FDwfDigitalOutIdleGet(hdwf : HDWF ; idxChannel : integer; pv : PDwfDi
 function   FDwfDigitalOutDividerInfo(hdwf : HDWF ; idxChannel : integer; vMin:PInteger; vMax:PInteger)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutDividerInitSet(hdwf : HDWF ; idxChannel : integer; v:integer)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutDividerInitGet(hdwf : HDWF ; idxChannel : integer; pv : PInteger)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutDividerSet(hdwf : HDWF ; idxChannel : integer; v:integer)  : boolean ; extdecl; external dwf_lib;
-function   FDwfDigitalOutDividerGet(hdwf : HDWF ; idxChannel : integer; pv:PInteger)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutDividerSet(hdwf : HDWF ; idxChannel : integer; v:Cardinal)  : boolean ; extdecl; external dwf_lib;
+function   FDwfDigitalOutDividerGet(hdwf : HDWF ; idxChannel : integer; pv:PCardinal)  : boolean ; extdecl; external dwf_lib;
 
 function   FDwfDigitalOutCounterInfo(hdwf : HDWF ; idxChannel : integer; vMin:PInteger; vMax:PInteger)  : boolean ; extdecl; external dwf_lib;
 function   FDwfDigitalOutCounterInitSet(hdwf : HDWF ; idxChannel : integer; fHigh:boolean ;  v:integer)  : boolean ; extdecl; external dwf_lib;

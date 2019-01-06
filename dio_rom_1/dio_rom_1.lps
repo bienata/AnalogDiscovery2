@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="4">
+      <Unit0>
+        <Filename Value="dio_rom_1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="27"/>
+        <CursorPos X="54" Y="43"/>
+        <UsageCount Value="33"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="../devinfo1/devtest1.lpr"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="53"/>
+        <CursorPos X="45" Y="72"/>
+        <UsageCount Value="21"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../dwf/dwf.pas"/>
+        <UnitName Value="Dwf"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="707"/>
+        <CursorPos X="85" Y="735"/>
+        <UsageCount Value="14"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="/usr/share/fpcsrc/3.0.0/rtl/inc/systemh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="93"/>
+        <CursorPos X="3" Y="109"/>
+        <UsageCount Value="9"/>
+      </Unit3>
+    </Units>
+    <JumpHistory Count="9" HistoryIndex="8">
+      <Position1>
+        <Filename Value="dio_rom_1.lpr"/>
+        <Caret Line="33" Column="38"/>
+      </Position1>
+      <Position2>
+        <Filename Value="dio_rom_1.lpr"/>
+        <Caret Line="38" Column="40" TopLine="6"/>
+      </Position2>
+      <Position3>
+        <Filename Value="dio_rom_1.lpr"/>
+        <Caret Line="39" Column="19" TopLine="10"/>
+      </Position3>
+      <Position4>
+        <Filename Value="dio_rom_1.lpr"/>
+        <Caret Line="45" Column="16" TopLine="21"/>
+      </Position4>
+      <Position5>
+        <Filename Value="dio_rom_1.lpr"/>
+        <Caret Line="13" Column="30" TopLine="25"/>
+      </Position5>
+      <Position6>
+        <Filename Value="dio_rom_1.lpr"/>
+        <Caret Line="44" Column="26" TopLine="28"/>
+      </Position6>
+      <Position7>
+        <Filename Value="dio_rom_1.lpr"/>
+        <Caret Line="42" Column="47" TopLine="26"/>
+      </Position7>
+      <Position8>
+        <Filename Value="dio_rom_1.lpr"/>
+        <Caret Line="42" Column="55" TopLine="26"/>
+      </Position8>
+      <Position9>
+        <Filename Value="dio_rom_1.lpr"/>
+        <Caret Line="43" Column="43" TopLine="27"/>
+      </Position9>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

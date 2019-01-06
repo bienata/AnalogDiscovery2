@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="4">
+      <Unit0>
+        <Filename Value="dio_rom_3.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="33"/>
+        <CursorPos X="23" Y="48"/>
+        <UsageCount Value="37"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="../devinfo1/devtest1.lpr"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="53"/>
+        <CursorPos X="45" Y="72"/>
+        <UsageCount Value="21"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../dwf/dwf.pas"/>
+        <UnitName Value="Dwf"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="260"/>
+        <CursorPos X="36" Y="277"/>
+        <UsageCount Value="16"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="/usr/share/fpcsrc/3.0.0/rtl/inc/systemh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="93"/>
+        <CursorPos X="3" Y="109"/>
+        <UsageCount Value="9"/>
+      </Unit3>
+    </Units>
+    <JumpHistory Count="6" HistoryIndex="5">
+      <Position1>
+        <Filename Value="dio_rom_3.lpr"/>
+        <Caret Line="63" TopLine="31"/>
+      </Position1>
+      <Position2>
+        <Filename Value="dio_rom_3.lpr"/>
+        <Caret Line="14" Column="13"/>
+      </Position2>
+      <Position3>
+        <Filename Value="dio_rom_3.lpr"/>
+        <Caret Line="52" Column="65" TopLine="36"/>
+      </Position3>
+      <Position4>
+        <Filename Value="dio_rom_3.lpr"/>
+        <Caret Line="49" Column="37" TopLine="36"/>
+      </Position4>
+      <Position5>
+        <Filename Value="dio_rom_3.lpr"/>
+        <Caret Line="47" Column="18" TopLine="24"/>
+      </Position5>
+      <Position6>
+        <Filename Value="dio_rom_3.lpr"/>
+        <Caret Line="62" Column="57" TopLine="39"/>
+      </Position6>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

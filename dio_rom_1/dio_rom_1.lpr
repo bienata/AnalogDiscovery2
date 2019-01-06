@@ -1,0 +1,62 @@
+program dio_rom_1;
+
+{$mode objfpc}{$H+}
+
+uses
+    {$IFDEF UNIX}{$IFDEF UseCThreads}
+    cthreads,
+    {$ENDIF}{$ENDIF}
+    Classes,
+    { you can add units after this }
+    crt, sysutils, dwf;
+
+var
+   hAd2 : HDWF;
+   msgErr : TDwfString512;
+   truthTableXOR : byte;
+
+begin
+
+  if not FDwfDeviceOpen( -1, @hAd2 ) then
+  begin
+       FDwfGetLastErrorMsg( msgErr );
+       writeln ( msgErr );
+       exit;
+  end;
+
+  // robimy bramkę XOR
+  // wejscia:
+  //     A = DIO-0
+  //     B = DIO-1
+  // wyjsice:
+  //     Y = DIO-15
+
+  //skoro jako IN, to ustawiamy im enabled=false... #JPDL :(
+  FDwfDigitalOutEnableSet( hAd2, DIO_0, false );
+  FDwfDigitalOutEnableSet( hAd2, DIO_1, false );
+  // DIO-15 - wyjscie bramki
+  FDwfDigitalOutEnableSet( hAd2, DIO_15, true );
+  //tryb pracy wyjscia - TS
+  FDwfDigitalOutTypeSet( hAd2, DIO_15, DwfDigitalOutTypeROM );
+  // CLK - 100MHz:
+  FDwfDigitalOutDividerSet( hAd2, DIO_15, Cardinal(1) );
+
+  FDwfDigitalOutOutputSet(hAd2, DIO_15, DwfDigitalOutOutputPushPull ); // push-pull
+
+  // tabela prawdy dla bramki
+  //                  76543210
+  truthTableXOR := %00000110;
+  FDwfDigitalOutDataSet( hAd2, DIO_15, @truthTableXOR, 8 );
+
+  writeln ('bramka gotowa');
+  FDwfDigitalOutConfigure( hAd2, true );
+
+  repeat
+     delay (100);
+  until false;
+
+  writeln ('i po bramce');
+  FDwfDigitalOutReset( hAd2 );
+  FDwfDeviceClose( hAd2 );
+end.
+
