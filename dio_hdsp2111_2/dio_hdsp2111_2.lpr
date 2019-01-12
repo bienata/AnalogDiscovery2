@@ -25,14 +25,6 @@ var
    r : byte;
 const
   rot : array [0..3] of string = ( '-', '\', '|', '/' );
-  msg : array [0..4] of string = (
-  //  0123456789ABCDEF
-     'to jest test    ',
-     '    wyswietlacza',
-     '*** HDSP2111 ***',
-     '  tasza was here',
-     'hello  microgeek'
-  );
 
 WR_HI : dword = $8000;
 WR_LO : dword = $0000;
@@ -94,7 +86,7 @@ begin
   FDwfAnalogInChannelRangeSet( hAd2, -1, 5.0 );   // zakres 5Vpp
   FDwfAnalogInFrequencySet( hAd2, 10E+3 ); // fs=10kHz
   FDwfAnalogInBufferSizeSet( hAd2, MAX_SAMPLES ); // buforek 255 sampli
-  FDwfAnalogInTriggerAutoTimeoutSet( hAd2, 1.0 );     // autotrigger na ON
+  FDwfAnalogInTriggerAutoTimeoutSet( hAd2, 0.1 );     // autotrigger na ON
   FDwfAnalogInTriggerSourceSet( hAd2, trigsrcNone );
 
   repeat
@@ -104,29 +96,12 @@ begin
         Delay (1);
      until status = stsDone;
      FDwfAnalogInStatusData( hAd2, 0, @samplesBuff, MAX_SAMPLES );
-     write ('.');
      T := 0.0;
      for i := 0 to 99 do T := T + samplesBuff[ i ];
      T := (T/MAX_SAMPLES - 0.500 (* dV MCP9700 *))/0.01 (* 10mV/C *);
      Hdsp2111Text ( LeftStr('za oknem ' + FormatFloat ('##.#', T) + '''C' + rot[r], 16) );
      delay (500);
      r := (r+1) and $3;
-     (*
-  for i := 0 to length( msg )-1 do
-  begin
-      Hdsp2111Text ( msg [i] );
-      for b := 0 to 7 do
-      begin
-            hdsp2111brightness ( b );
-            delay( 100 );
-      end;
-      delay( 500 );
-      for b := 7 downto 0 do
-      begin
-            hdsp2111brightness ( b );
-            delay( 100 );
-      end;
-  end; *)
   until false;
 
   FDwfDigitalOutReset( hAd2 );
