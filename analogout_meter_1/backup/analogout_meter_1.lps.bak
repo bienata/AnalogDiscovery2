@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="4">
+      <Unit0>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="72"/>
+        <CursorPos X="66" Y="83"/>
+        <UsageCount Value="39"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="../devinfo1/devtest1.lpr"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="53"/>
+        <CursorPos X="45" Y="72"/>
+        <UsageCount Value="21"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../dwf/dwf.pas"/>
+        <UnitName Value="Dwf"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="165"/>
+        <CursorPos X="72" Y="188"/>
+        <UsageCount Value="17"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="/usr/share/fpcsrc/3.0.0/rtl/inc/systemh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="93"/>
+        <CursorPos X="3" Y="109"/>
+        <UsageCount Value="9"/>
+      </Unit3>
+    </Units>
+    <JumpHistory Count="20" HistoryIndex="19">
+      <Position1>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="81" Column="61" TopLine="63"/>
+      </Position1>
+      <Position2>
+        <Filename Value="../dwf/dwf.pas"/>
+        <Caret Line="206" Column="28" TopLine="190"/>
+      </Position2>
+      <Position3>
+        <Filename Value="../dwf/dwf.pas"/>
+        <Caret Line="509" Column="40" TopLine="482"/>
+      </Position3>
+      <Position4>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="86" Column="43" TopLine="63"/>
+      </Position4>
+      <Position5>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="84" TopLine="68"/>
+      </Position5>
+      <Position6>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="81" TopLine="68"/>
+      </Position6>
+      <Position7>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="82" TopLine="68"/>
+      </Position7>
+      <Position8>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="83" TopLine="68"/>
+      </Position8>
+      <Position9>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="84" TopLine="68"/>
+      </Position9>
+      <Position10>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="86" TopLine="68"/>
+      </Position10>
+      <Position11>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="115" TopLine="86"/>
+      </Position11>
+      <Position12>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="116" TopLine="86"/>
+      </Position12>
+      <Position13>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="86" Column="3" TopLine="71"/>
+      </Position13>
+      <Position14>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="81" TopLine="71"/>
+      </Position14>
+      <Position15>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="82" TopLine="71"/>
+      </Position15>
+      <Position16>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="83" TopLine="71"/>
+      </Position16>
+      <Position17>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="84" TopLine="71"/>
+      </Position17>
+      <Position18>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="115" TopLine="87"/>
+      </Position18>
+      <Position19>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="116" TopLine="87"/>
+      </Position19>
+      <Position20>
+        <Filename Value="analogout_meter_1.lpr"/>
+        <Caret Line="117" TopLine="87"/>
+      </Position20>
+    </JumpHistory>
+  </ProjectSession>
+  <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="analogout_meter_1.lpr"/>
+        <Line Value="84"/>
+      </Item1>
+    </BreakPoints>
+  </Debugging>
+</CONFIG>
